@@ -1,0 +1,6 @@
+framework module Pods_APIPractice {
+  umbrella header "Pods-APIPractice-umbrella.h"
+
+  export *
+  module * { export * }
+}
