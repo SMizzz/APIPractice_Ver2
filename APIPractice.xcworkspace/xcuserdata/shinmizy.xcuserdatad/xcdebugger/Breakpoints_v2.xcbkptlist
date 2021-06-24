@@ -20,7 +20,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "D73F20B0-FB5D-47A2-893A-73A70E7F58A8 - f94863280bbe24f2"
+                  uuid = "D73F20B0-FB5D-47A2-893A-73A70E7F58A8 - f94863280bbe24d1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -30,12 +30,12 @@
                   urlString = "file:///Users/shinmizy/Documents/GitHub/APIPractice/APIPractice/PostAPI/PostViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
                   offsetFromSymbolStart = "521">
                </Location>
                <Location
-                  uuid = "D73F20B0-FB5D-47A2-893A-73A70E7F58A8 - a2c0bfa168ae4855"
+                  uuid = "D73F20B0-FB5D-47A2-893A-73A70E7F58A8 - a2c0bfa168ae4834"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -45,8 +45,8 @@
                   urlString = "file:///Users/shinmizy/Documents/GitHub/APIPractice/APIPractice/PostAPI/PostViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
                   offsetFromSymbolStart = "212">
                </Location>
             </Locations>
@@ -148,7 +148,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "5235DA29-2DE7-4C74-9F9C-E755A95E44B8 - f94863280bbe250c"
+                  uuid = "5235DA29-2DE7-4C74-9F9C-E755A95E44B8 - f94863280bbe26e3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -158,12 +158,12 @@
                   urlString = "file:///Users/shinmizy/Documents/GitHub/APIPractice/APIPractice/PostAPI/PostViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
                   offsetFromSymbolStart = "996">
                </Location>
                <Location
-                  uuid = "5235DA29-2DE7-4C74-9F9C-E755A95E44B8 - a2c0bfa168ae4988"
+                  uuid = "5235DA29-2DE7-4C74-9F9C-E755A95E44B8 - a2c0bfa168ae4a67"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -173,8 +173,8 @@
                   urlString = "file:///Users/shinmizy/Documents/GitHub/APIPractice/APIPractice/PostAPI/PostViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
                   offsetFromSymbolStart = "1594">
                </Location>
             </Locations>
@@ -196,7 +196,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "279742E1-B79F-4A25-ABE2-993090E8782A - f94863280bbe250c"
+                  uuid = "279742E1-B79F-4A25-ABE2-993090E8782A - f94863280bbe26e3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -206,12 +206,12 @@
                   urlString = "file:///Users/shinmizy/Documents/GitHub/APIPractice/APIPractice/PostAPI/PostViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
                   offsetFromSymbolStart = "996">
                </Location>
                <Location
-                  uuid = "279742E1-B79F-4A25-ABE2-993090E8782A - a2c0bfa168ae4988"
+                  uuid = "279742E1-B79F-4A25-ABE2-993090E8782A - a2c0bfa168ae4a67"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -221,8 +221,8 @@
                   urlString = "file:///Users/shinmizy/Documents/GitHub/APIPractice/APIPractice/PostAPI/PostViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "79"
-                  endingLineNumber = "79"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
                   offsetFromSymbolStart = "1594">
                </Location>
             </Locations>
@@ -274,6 +274,38 @@
             endingLineNumber = "87"
             landmarkName = "parseJsonData(data:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8DC6196B-8571-4A90-9B70-C219F46F49C2 - c8360a9954575af6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "APIPractice.PostViewController.parseJsonData(data: Foundation.Data) -&gt; Swift.Array&lt;APIPractice.Post&gt;"
+                  moduleName = "APIPractice"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shinmizy/Documents/GitHub/APIPractice/APIPractice/PostAPI/PostViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "261">
+               </Location>
+               <Location
+                  uuid = "8DC6196B-8571-4A90-9B70-C219F46F49C2 - c8360a9954575af6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "APIPractice.PostViewController.parseJsonData(data: Foundation.Data) -&gt; Swift.Array&lt;APIPractice.Post&gt;"
+                  moduleName = "APIPractice"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shinmizy/Documents/GitHub/APIPractice/APIPractice/PostAPI/PostViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "360">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
