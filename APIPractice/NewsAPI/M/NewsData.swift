@@ -22,10 +22,10 @@ struct News: Codable {
   
   init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: CodingKeys.self)
+    thumbImage = try values.decode(String.self, forKey: .thumbImage)
     title = try values.decode(String.self, forKey: .title)
     author = try values.decode(String.self, forKey: .author)
     content = try values.decode(String.self, forKey: .content)
-    thumbImage = try values.decode(String.self, forKey: .thumbImage)
   }
 }
 

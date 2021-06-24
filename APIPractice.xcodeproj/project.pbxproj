@@ -15,6 +15,12 @@
 		021BD73B26817CD600D265FB /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021BD73A26817CD600D265FB /* PostViewController.swift */; };
 		021BD74326817CFB00D265FB /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021BD74226817CFB00D265FB /* PostData.swift */; };
 		021BD74626817D0E00D265FB /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021BD74526817D0E00D265FB /* PostCell.swift */; };
+		02D2E37726842F450003F22B /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2E37626842F450003F22B /* MovieViewController.swift */; };
+		02D2E37A268432150003F22B /* MovieTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2E379268432150003F22B /* MovieTopView.swift */; };
+		02D2E37D268442070003F22B /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2E37C268442070003F22B /* MovieCell.swift */; };
+		02D2E380268447940003F22B /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2E37F268447940003F22B /* MovieData.swift */; };
+		02D2E38726846DA30003F22B /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2E38626846DA30003F22B /* MovieDetailViewController.swift */; };
+		02D2E38A26846E230003F22B /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D2E38926846E230003F22B /* MovieDetailView.swift */; };
 		02EC5FB72682C99000B02FE9 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC5FB62682C99000B02FE9 /* NewsCell.swift */; };
 		02EC5FBA2682CCC800B02FE9 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC5FB92682CCC800B02FE9 /* NewsViewController.swift */; };
 		02EC5FC12682CE8200B02FE9 /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EC5FC02682CE8200B02FE9 /* NewsData.swift */; };
@@ -32,6 +38,12 @@
 		021BD73A26817CD600D265FB /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		021BD74226817CFB00D265FB /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		021BD74526817D0E00D265FB /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		02D2E37626842F450003F22B /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
+		02D2E379268432150003F22B /* MovieTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTopView.swift; sourceTree = "<group>"; };
+		02D2E37C268442070003F22B /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		02D2E37F268447940003F22B /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
+		02D2E38626846DA30003F22B /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		02D2E38926846E230003F22B /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		02EC5FB62682C99000B02FE9 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		02EC5FB92682CCC800B02FE9 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		02EC5FC02682CE8200B02FE9 /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
@@ -77,6 +89,7 @@
 				021BD72126817C9C00D265FB /* SceneDelegate.swift */,
 				021BD73426817CA800D265FB /* PostAPI */,
 				02EC5FB22682C95900B02FE9 /* NewsAPI */,
+				02D2E37226842F230003F22B /* MovieAPI */,
 				021BD72526817C9D00D265FB /* Assets.xcassets */,
 				021BD72A26817C9D00D265FB /* LaunchScreen.storyboard */,
 				021BD72D26817C9D00D265FB /* Info.plist */,
@@ -125,6 +138,43 @@
 				021BD74526817D0E00D265FB /* PostCell.swift */,
 			);
 			name = V;
+			sourceTree = "<group>";
+		};
+		02D2E37226842F230003F22B /* MovieAPI */ = {
+			isa = PBXGroup;
+			children = (
+				02D2E37526842F380003F22B /* M */,
+				02D2E37426842F350003F22B /* V */,
+				02D2E37326842F2C0003F22B /* C */,
+			);
+			path = MovieAPI;
+			sourceTree = "<group>";
+		};
+		02D2E37326842F2C0003F22B /* C */ = {
+			isa = PBXGroup;
+			children = (
+				02D2E37626842F450003F22B /* MovieViewController.swift */,
+				02D2E38626846DA30003F22B /* MovieDetailViewController.swift */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		02D2E37426842F350003F22B /* V */ = {
+			isa = PBXGroup;
+			children = (
+				02D2E379268432150003F22B /* MovieTopView.swift */,
+				02D2E37C268442070003F22B /* MovieCell.swift */,
+				02D2E38926846E230003F22B /* MovieDetailView.swift */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		02D2E37526842F380003F22B /* M */ = {
+			isa = PBXGroup;
+			children = (
+				02D2E37F268447940003F22B /* MovieData.swift */,
+			);
+			path = M;
 			sourceTree = "<group>";
 		};
 		02EC5FB22682C95900B02FE9 /* NewsAPI */ = {
@@ -292,11 +342,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02D2E380268447940003F22B /* MovieData.swift in Sources */,
 				02EC5FC12682CE8200B02FE9 /* NewsData.swift in Sources */,
+				02D2E37A268432150003F22B /* MovieTopView.swift in Sources */,
 				021BD73B26817CD600D265FB /* PostViewController.swift in Sources */,
+				02D2E38726846DA30003F22B /* MovieDetailViewController.swift in Sources */,
+				02D2E37D268442070003F22B /* MovieCell.swift in Sources */,
+				02D2E38A26846E230003F22B /* MovieDetailView.swift in Sources */,
 				021BD74326817CFB00D265FB /* PostData.swift in Sources */,
 				021BD72026817C9C00D265FB /* AppDelegate.swift in Sources */,
 				021BD72226817C9C00D265FB /* SceneDelegate.swift in Sources */,
+				02D2E37726842F450003F22B /* MovieViewController.swift in Sources */,
 				02EC5FBA2682CCC800B02FE9 /* NewsViewController.swift in Sources */,
 				02EC5FB72682C99000B02FE9 /* NewsCell.swift in Sources */,
 				021BD74626817D0E00D265FB /* PostCell.swift in Sources */,
