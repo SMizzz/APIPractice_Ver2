@@ -35,7 +35,8 @@ class PostViewController: UIViewController {
   // MARK: - Handlers
   private func setup() {
     view.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
-    configureAlamofire()
+//    configureAlamofire()
+    configureURLSession()
     configureCollectionView()
   }
   
@@ -55,11 +56,46 @@ class PostViewController: UIViewController {
     collectionView.delegate = self
   }
   
-  private func configureAlamofire() {
-    getData()
+//  private func configureAlamofire() {
+//    getData()
+//  }
+  
+  private func configureURLSession() {
+    guard let postUrl = URL(string: postUrlString) else { return }
+    let request = URLRequest(url: postUrl)
+    URLSession.shared.dataTask(with: request) { (data, response, error) in
+      if error != nil {
+        print(error?.localizedDescription)
+        return
+      }
+      
+      do {
+        let jsonResultArray = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [NSDictionary]
+        guard let jsonPost = jsonResultArray else { return }
+        print(jsonPost)
+        
+        for post in jsonPost {
+          var postData = Post()
+          postData.userId = post["userId"] as! Int
+          postData.id = post["id"] as! Int
+          postData.title = post["title"] as! String
+          postData.body = post["body"] as! String
+          
+          self.posts.append(postData)
+        }
+    
+        OperationQueue.main.addOperation {
+          self.collectionView.reloadData()
+        }
+        
+      } catch let error {
+        print(error)
+      }
+    }.resume()
   }
   
   // #1 Alamofire - get data(1)
+  /*
   func getData() {
     guard let postUrl = URL(string: postUrlString) else { return }
     let request = URLRequest(url: postUrl)
@@ -89,7 +125,7 @@ class PostViewController: UIViewController {
     }
     return posts
   }
-  
+  */
   // MARK: - Constraints
   private func collectionViewConstraints() {
     collectionView.translatesAutoresizingMaskIntoConstraints = false

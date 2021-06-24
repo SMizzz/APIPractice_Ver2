@@ -7,6 +7,8 @@
 
 import Foundation
 
+// #1 - Alamofire Networking
+/*
 struct Post: Codable {
   var userId: Int = 0
   var id: Int = 0
@@ -27,4 +29,13 @@ struct Post: Codable {
     title = try values.decode(String.self, forKey: .title)
     body = try values.decode(String.self, forKey: .body)
   }
+}
+ */
+
+// #2 - URLSession Networking
+struct Post {
+  var userId: Int = 0
+  var id: Int = 0
+  var title: String = ""
+  var body: String = ""
 }
