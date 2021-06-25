@@ -7,6 +7,8 @@
 
 import Foundation
 
+// #1 Alamofire Networking
+/*
 struct News: Codable {
   var thumbImage: String = ""
   var title: String = ""
@@ -30,5 +32,18 @@ struct News: Codable {
 }
 
 struct NewsDataStore: Codable {
+  var articles: [News]
+}
+*/
+
+// #2 URLSession Networking
+struct News {
+  var thumbImage: String = ""
+  var title: String = ""
+  var author: String = ""
+  var content: String = ""
+}
+
+struct NewsDataStore {
   var articles: [News]
 }

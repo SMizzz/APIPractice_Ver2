@@ -37,7 +37,8 @@ class NewsViewController: UIViewController {
   private func setup() {
     view.backgroundColor = .white
     configureCollectionView()
-    configureAlamofire()
+//    configureAlamofire()
+    configureURLSession()
   }
   
   private func addViews() {
@@ -56,39 +57,80 @@ class NewsViewController: UIViewController {
     collectionView.delegate = self
   }
   
-  private func configureAlamofire() {
-    getData()
+//  private func configureAlamofire() {
+//    getData()
+//  }
+  
+  // #1 Alamofire Networking
+//  private func getData() {
+//    guard let newsUrl = URL(string: newsApiUrlString) else { return }
+//    let request = URLRequest(url: newsUrl)
+//
+//    AF.request(request).responseData { (response) in
+//      print(response.result)
+//      switch response.result {
+//      case .success(let data):
+//        self.parseJsonData(data: data)
+//        OperationQueue.main.addOperation {
+//          self.collectionView.reloadData()
+//        }
+//        break
+//      case .failure(let error):
+//        print(error)
+//        break
+//      }
+//    }
+//  }
+//
+//  func parseJsonData(data: Data) -> [News] {
+//    do {
+//      let decoder = JSONDecoder()
+//      let newsDataStore = try decoder.decode(NewsDataStore.self, from: data)
+//      self.newsData = newsDataStore.articles
+//    } catch let error {
+//      print(error)
+//    }
+//    return newsData
+//  }
+  
+  private func configureURLSession() {
+   getData()
   }
   
-  private func getData() {
+  func getData() {
     guard let newsUrl = URL(string: newsApiUrlString) else { return }
     let request = URLRequest(url: newsUrl)
     
-    AF.request(request).responseData { (response) in
-      print(response.result)
-      switch response.result {
-      case .success(let data):
-        self.parseJsonData(data: data)
+    URLSession.shared.dataTask(with: request) {(data, response, error) in
+      //에러가 발생했을 때
+      if error != nil {
+        print(error?.localizedDescription)
+        return
+      }
+      
+      do {
+        let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+
+        let jsonNews = jsonResult!["articles"] as! [AnyObject]
+        print("json movies \(jsonNews)")
+        
+        for json in jsonNews {
+          var news = News()
+          news.title = json["title"] as! String
+          news.author = json["author"] as! String
+          news.content = json["content"] as! String
+          news.thumbImage = json["urlToImage"] as! String
+          self.newsData.append(news)
+        }
+        
         OperationQueue.main.addOperation {
           self.collectionView.reloadData()
         }
-        break
-      case .failure(let error):
+        
+      } catch let error {
         print(error)
-        break
       }
-    }
-  }
-  
-  func parseJsonData(data: Data) -> [News] {
-    do {
-      let decoder = JSONDecoder()
-      let newsDataStore = try decoder.decode(NewsDataStore.self, from: data)
-      self.newsData = newsDataStore.articles
-    } catch let error {
-      print(error)
-    }
-    return newsData
+    }.resume()
   }
   
   
