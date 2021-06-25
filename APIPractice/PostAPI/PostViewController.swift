@@ -36,7 +36,8 @@ class PostViewController: UIViewController {
   private func setup() {
     view.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
 //    configureAlamofire()
-    configureURLSession()
+//    configureURLSession()
+    configureJsonParsing()
     configureCollectionView()
   }
   
@@ -56,10 +57,51 @@ class PostViewController: UIViewController {
     collectionView.delegate = self
   }
   
+  private func configureJsonParsing() {
+    getData()
+  }
+  
+  private func getData() {
+    guard let postUrl = URL(string: postUrlString) else { return }
+    let request = URLRequest(url: postUrl)
+    
+    URLSession.shared.dataTask(with: request) { (data, response, error) in
+      if error != nil {
+        print(error?.localizedDescription)
+        return
+      }
+      
+      do {
+        self.jsonParseData(data: data!)
+        
+        OperationQueue.main.addOperation {
+          self.collectionView.reloadData()
+          return
+        }
+      } catch let error {
+        print(error.localizedDescription)
+        return
+      }
+      
+    }.resume()
+  }
+  
+  func jsonParseData(data: Data) -> [Post] {
+    do {
+      let decoder = JSONDecoder()
+      posts = try decoder.decode([Post].self, from: data)
+    } catch let error {
+      print(error.localizedDescription)
+    }
+    return posts
+  }
+  
 //  private func configureAlamofire() {
 //    getData()
 //  }
   
+  // #2 URLSession (2)
+  /*
   private func configureURLSession() {
     guard let postUrl = URL(string: postUrlString) else { return }
     let request = URLRequest(url: postUrl)
@@ -93,6 +135,7 @@ class PostViewController: UIViewController {
       }
     }.resume()
   }
+ */
   
   // #1 Alamofire - get data(1)
   /*
@@ -129,7 +172,7 @@ class PostViewController: UIViewController {
   // MARK: - Constraints
   private func collectionViewConstraints() {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
-    collectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.92).isActive = true
+    collectionView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.94).isActive = true
     collectionView.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
     collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 45).isActive = true
@@ -167,7 +210,7 @@ extension PostViewController:
     layout collectionViewLayout: UICollectionViewLayout,
     sizeForItemAt indexPath: IndexPath
   ) -> CGSize {
-    return CGSize(width: view.frame.width, height: 310)
+    return CGSize(width: view.frame.width - 30, height: 310)
   }
   
   func collectionView(
