@@ -39,7 +39,8 @@ class MovieViewController: UIViewController {
     navigationController?.navigationBar.isHidden = true
     configureCollectionView()
 //    configureAlamofire()
-    configureUrlSession()
+//    configureUrlSession()
+    configureJsonParse()
   }
   
   private func addViews() {
@@ -58,6 +59,44 @@ class MovieViewController: UIViewController {
     collectionView.register(
       MovieCell.self,
       forCellWithReuseIdentifier: movieCellId)
+  }
+  
+  // #3 Json Parsing - Networking
+  private func configureJsonParse() {
+    getData()
+  }
+  
+  private func getData() {
+    guard let movieUrl = URL(string: movieUrlString) else { return }
+    let request = URLRequest(url: movieUrl)
+    
+    URLSession.shared.dataTask(with: request) { (data, response, error) in
+      if error != nil {
+        print(error?.localizedDescription)
+        return
+      }
+      do {
+        self.movieData = self.jsonParseData(data: data!)
+        OperationQueue.main.addOperation {
+          self.collectionView.reloadData()
+          return
+        }
+      } catch let error {
+        print(error.localizedDescription)
+        return
+      }
+    }.resume()
+  }
+  
+  func jsonParseData(data: Data) -> [Movie] {
+    do {
+      let decoder = JSONDecoder()
+      let movieDataStore = try decoder.decode(MovieDataStore.self, from: data)
+      self.movieData = movieDataStore.results
+    } catch let error {
+      print(error.localizedDescription)
+    }
+    return movieData
   }
   
   // #1 Alamofire - Networking
@@ -97,6 +136,9 @@ class MovieViewController: UIViewController {
     return movieData
   }
  */
+  
+  //#2 URLSession Networking
+  /*
   private func configureUrlSession() {
     getData()
   }
@@ -134,6 +176,7 @@ class MovieViewController: UIViewController {
       }
     }.resume()
   }
+  */
   
   // MARK: - Constraints
   private func topViewConstraints() {

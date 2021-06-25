@@ -7,8 +7,7 @@
 
 import Foundation
 
-// #1 Alamofire Networking
-/*
+// #1 & #3 - Alamofire, Json Parsing Networking
 struct Movie: Codable {
   // 이미지, 영화제목, 장르, 평점, 내용
   var thumbNailImage: String = ""
@@ -38,8 +37,9 @@ struct Movie: Codable {
 struct MovieDataStore: Codable {
   var results: [Movie]
 }
-*/
 
+// #2 UrlSession Networking
+/*
 struct Movie {
   var thumbNailImage: String = ""
   var movieName: String = ""
@@ -50,3 +50,4 @@ struct Movie {
 struct MovieDataStore {
   var results: [Movie]
 }
+*/
