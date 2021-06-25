@@ -38,7 +38,8 @@ class MovieViewController: UIViewController {
     view.backgroundColor = .white
     navigationController?.navigationBar.isHidden = true
     configureCollectionView()
-    configureAlamofire()
+//    configureAlamofire()
+    configureUrlSession()
   }
   
   private func addViews() {
@@ -59,6 +60,8 @@ class MovieViewController: UIViewController {
       forCellWithReuseIdentifier: movieCellId)
   }
   
+  // #1 Alamofire - Networking
+  /*
   private func configureAlamofire() {
     getData()
   }
@@ -92,6 +95,44 @@ class MovieViewController: UIViewController {
       print(error)
     }
     return movieData
+  }
+ */
+  private func configureUrlSession() {
+    getData()
+  }
+  
+  private func getData() {
+    guard let movieUrl = URL(string: movieUrlString) else { return }
+    let request = URLRequest(url: movieUrl)
+    
+    URLSession.shared.dataTask(with: request) { (data, response, error) in
+      if error != nil {
+        print(error?.localizedDescription)
+        return
+      }
+      
+      do {
+        let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+        let jsonMovies = jsonResult!["results"] as! [AnyObject]
+        
+        for movies in jsonMovies {
+          var movie = Movie()
+          movie.thumbNailImage = movies["poster_path"] as! String
+          movie.movieName = movies["original_name"] as! String
+          movie.average = Float(movies["vote_average"] as! NSNumber)
+          movie.overview = movies["overview"] as! String
+          
+          self.movieData.append(movie)
+        }
+        
+        OperationQueue.main.addOperation {
+          self.collectionView.reloadData()
+        }
+        
+      } catch let error {
+        print(error.localizedDescription)
+      }
+    }.resume()
   }
   
   // MARK: - Constraints

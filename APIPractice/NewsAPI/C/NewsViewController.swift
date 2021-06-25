@@ -133,7 +133,6 @@ class NewsViewController: UIViewController {
     }.resume()
   }
   
-  
   // MARK: - Constraints
   private func collectionViewConstraints() {
     collectionView.translatesAutoresizingMaskIntoConstraints = false

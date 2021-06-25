@@ -7,6 +7,8 @@
 
 import Foundation
 
+// #1 Alamofire Networking
+/*
 struct Movie: Codable {
   // 이미지, 영화제목, 장르, 평점, 내용
   var thumbNailImage: String = ""
@@ -34,5 +36,17 @@ struct Movie: Codable {
 }
 
 struct MovieDataStore: Codable {
+  var results: [Movie]
+}
+*/
+
+struct Movie {
+  var thumbNailImage: String = ""
+  var movieName: String = ""
+  var average: Float = 0.0
+  var overview: String = ""
+}
+
+struct MovieDataStore {
   var results: [Movie]
 }
