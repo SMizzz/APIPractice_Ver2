@@ -38,7 +38,8 @@ class NewsViewController: UIViewController {
     view.backgroundColor = .white
     configureCollectionView()
 //    configureAlamofire()
-    configureURLSession()
+//    configureURLSession()
+    configureJsonParse()
   }
   
   private func addViews() {
@@ -55,6 +56,45 @@ class NewsViewController: UIViewController {
       forCellWithReuseIdentifier: newsCellId)
     collectionView.dataSource = self
     collectionView.delegate = self
+  }
+  
+  private func configureJsonParse() {
+    getData()
+  }
+  
+  private func getData() {
+    guard let newsUrl = URL(string: newsApiUrlString) else { return }
+    let request = URLRequest(url: newsUrl)
+    
+    URLSession.shared.dataTask(with: request) { (data, response, error) in
+      if error != nil {
+        print(error?.localizedDescription)
+        return
+      }
+      
+      do {
+        self.newsData = self.jsonParseData(data: data!)
+        OperationQueue.main.addOperation {
+          self.collectionView.reloadData()
+          return
+        }
+      } catch let error {
+        print(error.localizedDescription)
+        return
+      }
+      
+    }.resume()
+  }
+  
+  func jsonParseData(data: Data) -> [News] {
+    do {
+      let decoder = JSONDecoder()
+      let newsDataStore = try decoder.decode(NewsDataStore.self, from: data)
+      self.newsData = newsDataStore.articles
+    } catch let error {
+      print(error.localizedDescription)
+    }
+    return newsData
   }
   
 //  private func configureAlamofire() {
@@ -93,6 +133,8 @@ class NewsViewController: UIViewController {
 //    return newsData
 //  }
   
+  // #2 URLSession Networking
+  /*
   private func configureURLSession() {
    getData()
   }
@@ -132,6 +174,7 @@ class NewsViewController: UIViewController {
       }
     }.resume()
   }
+ */
   
   // MARK: - Constraints
   private func collectionViewConstraints() {

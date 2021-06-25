@@ -7,8 +7,7 @@
 
 import Foundation
 
-// #1 Alamofire Networking
-/*
+// #1 & #3 - Alamofire, Json Parsing Networking
 struct News: Codable {
   var thumbImage: String = ""
   var title: String = ""
@@ -34,9 +33,9 @@ struct News: Codable {
 struct NewsDataStore: Codable {
   var articles: [News]
 }
-*/
 
 // #2 URLSession Networking
+/*
 struct News {
   var thumbImage: String = ""
   var title: String = ""
@@ -47,3 +46,4 @@ struct News {
 struct NewsDataStore {
   var articles: [News]
 }
+*/
