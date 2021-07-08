@@ -35,9 +35,10 @@ class PostViewController: UIViewController {
   // MARK: - Handlers
   private func setup() {
     view.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+    getData()
 //    configureAlamofire()
 //    configureURLSession()
-    configureJsonParsing()
+//    configureJsonParsing()
     configureCollectionView()
   }
   
@@ -57,10 +58,18 @@ class PostViewController: UIViewController {
     collectionView.delegate = self
   }
   
-  private func configureJsonParsing() {
-    getData()
-  }
+//  private func configureJsonParsing() {
+//    getData()
+//  }
   
+  private func getData() {
+    
+    NetworkManager.getPostData { (post) in
+      self.posts = post
+      self.collectionView.reloadData()
+    }
+  }
+  /*
   private func getData() {
     guard let postUrl = URL(string: postUrlString) else { return }
     let request = URLRequest(url: postUrl)
@@ -95,7 +104,7 @@ class PostViewController: UIViewController {
     }
     return posts
   }
-  
+  */
 //  private func configureAlamofire() {
 //    getData()
 //  }
@@ -197,6 +206,30 @@ extension PostViewController:
     let cell = collectionView.dequeueReusableCell(
       withReuseIdentifier: postCellId,
       for: indexPath) as! PostCell
+    
+    print("cell for item at")
+    
+//    let userDefaults = UserDefaults.standard
+//    let userId = userDefaults.integer(forKey: "userId")
+//    let id = userDefaults.integer(forKey: "id")
+//    let title = userDefaults.string(forKey: "title")
+//    let body = userDefaults.string(forKey: "body")
+//
+//    NetworkManager.getPostData(userId: posts[indexPath.item].userId, id: posts[indexPath.item].id, title: posts[indexPath.item].title, body: posts[indexPath.item].body) { [self] (post) in
+//      print(post)
+//      self.posts.append(post)
+//      let postsData = posts[indexPath.item]
+//      cell.userIDLabel.text = "\(postsData.userId)"
+//      cell.postIdLabel.text = "\(postsData.id)"
+//      cell.titleLabel.text = postsData.title
+//      cell.bodyContentLabel.text = postsData.body
+//      collectionView.reloadData()
+//    }
+    //    cell.userIDLabel.text = userId
+    //    cell.postIdLabel.text = id
+//    cell.titleLabel.text = title
+//    cell.bodyContentLabel.text = body
+//
     let postsData = posts[indexPath.item]
     cell.userIDLabel.text = "\(postsData.userId)"
     cell.postIdLabel.text = "\(postsData.id)"
