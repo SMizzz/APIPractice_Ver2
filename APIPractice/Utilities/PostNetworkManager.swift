@@ -8,12 +8,11 @@
 import Moya
 import SwiftyJSON
 
-class NetworkManager {
-  static let provider = MoyaProvider<API>()
+class PostNetworkManager {
+  static let provider = MoyaProvider<PostAPI>()
   static func getPostData(
     completion: @escaping([Post]) -> ()
   ) {
-    
     provider.request(.getPostData) { (result) in
       switch result {
       case .success(let res):

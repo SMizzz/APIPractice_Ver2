@@ -8,12 +8,12 @@
 import Foundation
 import Moya
 
-enum API {
+enum PostAPI {
 //  case getPostData(userId: Int, id: Int, title: String, body: String)
   case getPostData
 }
 
-extension API: TargetType {
+extension PostAPI: TargetType {
   var baseURL: URL {
     guard let url = URL(string: "https://jsonplaceholder.typicode.com") else { fatalError("url error") }
     return url

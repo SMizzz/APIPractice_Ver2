@@ -63,7 +63,7 @@ class PostViewController: UIViewController {
 //  }
   
   private func getData() {
-    NetworkManager.getPostData { (post) in
+    PostNetworkManager.getPostData { (post) in
       self.posts = post
       self.collectionView.reloadData()
     }

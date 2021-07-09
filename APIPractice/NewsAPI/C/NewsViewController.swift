@@ -63,6 +63,14 @@ class NewsViewController: UIViewController {
   }
   
   private func getData() {
+    NewsNetworkManager.getNewsData { (news) in
+      self.newsData = news
+      self.collectionView.reloadData()
+    }
+  }
+  
+  /*
+  private func getData() {
     guard let newsUrl = URL(string: newsApiUrlString) else { return }
     let request = URLRequest(url: newsUrl)
     
@@ -85,7 +93,7 @@ class NewsViewController: UIViewController {
       
     }.resume()
   }
-  
+
   func jsonParseData(data: Data) -> [News] {
     do {
       let decoder = JSONDecoder()
@@ -96,6 +104,7 @@ class NewsViewController: UIViewController {
     }
     return newsData
   }
+   */
   
 //  private func configureAlamofire() {
 //    getData()
