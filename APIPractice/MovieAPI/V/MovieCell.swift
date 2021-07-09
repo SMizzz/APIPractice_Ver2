@@ -93,7 +93,7 @@ class MovieCell: UICollectionViewCell {
   
   private func movieNameLabelConstraints() {
     movieNameLabel.translatesAutoresizingMaskIntoConstraints = false
-    movieNameLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
+    movieNameLabel.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
     movieNameLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
     movieNameLabel.topAnchor.constraint(equalTo: movieThumbnailImageView.bottomAnchor, constant: 10).isActive = true
     movieNameLabel.leadingAnchor.constraint(equalTo: movieThumbnailImageView.leadingAnchor).isActive = true

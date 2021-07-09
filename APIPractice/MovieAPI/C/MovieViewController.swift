@@ -38,9 +38,9 @@ class MovieViewController: UIViewController {
     view.backgroundColor = .white
     navigationController?.navigationBar.isHidden = true
     configureCollectionView()
-//    configureAlamofire()
+    configureAlamofire()
 //    configureUrlSession()
-    configureJsonParse()
+//    configureJsonParse()
   }
   
   private func addViews() {
@@ -66,11 +66,12 @@ class MovieViewController: UIViewController {
     getData()
   }
   
+/*
   private func getData() {
     guard let movieUrl = URL(string: movieUrlString) else { return }
     let request = URLRequest(url: movieUrl)
     
-    URLSession.shared.dataTask(with: request) { (data, response, error) in
+    URLSession.shared.dataTask(with: request) { [self] (data, response, error) in
       if error != nil {
         print(error?.localizedDescription)
         return
@@ -78,6 +79,7 @@ class MovieViewController: UIViewController {
       do {
         self.movieData = self.jsonParseData(data: data!)
         OperationQueue.main.addOperation {
+          print("movie data is \(movieData)")
           self.collectionView.reloadData()
           return
         }
@@ -87,6 +89,7 @@ class MovieViewController: UIViewController {
       }
     }.resume()
   }
+ */
   
   func jsonParseData(data: Data) -> [Movie] {
     do {
@@ -100,7 +103,7 @@ class MovieViewController: UIViewController {
   }
   
   // #1 Alamofire - Networking
-  /*
+
   private func configureAlamofire() {
     getData()
   }
@@ -135,7 +138,6 @@ class MovieViewController: UIViewController {
     }
     return movieData
   }
- */
   
   //#2 URLSession Networking
   /*
@@ -216,6 +218,7 @@ extension MovieViewController:
       withReuseIdentifier: movieCellId,
       for: indexPath) as! MovieCell
     cell.delegate = self
+    print("cell for item at")
     let movie = movieData[indexPath.item]
     cell.movieThumbnailImageView.kf.setImage(
       with: URL(string: "https://image.tmdb.org/t/p/w500\(movie.thumbNailImage)"))
@@ -235,7 +238,7 @@ extension MovieViewController:
   }
   
   func cellDelegate(cell: MovieCell) {
-    guard let indexPath = collectionView.indexPath(for: cell) else { return}
+    guard let indexPath = collectionView.indexPath(for: cell) else { return }
     let movieDetailVC = MovieDetailViewController()
     let movie = movieData[indexPath.item]
     movieDetailVC.detailView.movieThumbnailImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(movie.thumbNailImage)"))
