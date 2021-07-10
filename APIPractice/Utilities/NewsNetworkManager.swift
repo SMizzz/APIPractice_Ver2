@@ -16,12 +16,12 @@ class NewsNetworkManager {
     provider.request(.getNewsData) { (result) in
       switch result {
       case .success(let res):
-        print(res.response?.statusCode)
         do {
           let newsData = try JSONDecoder().decode(NewsDataStore.self, from: res.data)
           completion(newsData.articles)
         } catch let err {
           print(err.localizedDescription)
+          return
         }
       case .failure(let err):
         print(err.localizedDescription)

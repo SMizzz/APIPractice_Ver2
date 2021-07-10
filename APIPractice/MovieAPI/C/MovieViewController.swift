@@ -38,7 +38,8 @@ class MovieViewController: UIViewController {
     view.backgroundColor = .white
     navigationController?.navigationBar.isHidden = true
     configureCollectionView()
-    configureAlamofire()
+    getData()
+//    configureAlamofire()
 //    configureUrlSession()
 //    configureJsonParse()
   }
@@ -61,10 +62,17 @@ class MovieViewController: UIViewController {
       forCellWithReuseIdentifier: movieCellId)
   }
   
-  // #3 Json Parsing - Networking
-  private func configureJsonParse() {
-    getData()
+  private func getData() {
+    MovieNetworkManager.getMovieData { (movie) in
+      self.movieData = movie
+      self.collectionView.reloadData()
+    }
   }
+  
+  // #3 Json Parsing - Networking
+//  private func configureJsonParse() {
+//    getData()
+//  }
   
 /*
   private func getData() {
@@ -89,7 +97,7 @@ class MovieViewController: UIViewController {
       }
     }.resume()
   }
- */
+
   
   func jsonParseData(data: Data) -> [Movie] {
     do {
@@ -101,9 +109,11 @@ class MovieViewController: UIViewController {
     }
     return movieData
   }
+   */
   
   // #1 Alamofire - Networking
 
+  /*
   private func configureAlamofire() {
     getData()
   }
@@ -138,7 +148,7 @@ class MovieViewController: UIViewController {
     }
     return movieData
   }
-  
+   */
   //#2 URLSession Networking
   /*
   private func configureUrlSession() {
@@ -218,7 +228,6 @@ extension MovieViewController:
       withReuseIdentifier: movieCellId,
       for: indexPath) as! MovieCell
     cell.delegate = self
-    print("cell for item at")
     if let image = movieData[indexPath.item].thumbNailImage {
       cell.movieThumbnailImageView.kf.setImage(
         with: URL(string: "https://image.tmdb.org/t/p/w500\(image)"))
@@ -226,7 +235,6 @@ extension MovieViewController:
       cell.movieThumbnailImageView.kf.setImage(with: URL(string: "https://images-na.ssl-images-amazon.com/images/I/81u6wFnRDHL._AC_SL1500_.jpg"))
     }
     let movie = movieData[indexPath.item]
-    
     cell.movieNameLabel.text = movie.movieName
     cell.averageCountLabel.text = "⭐\(movie.average)"
     return cell
