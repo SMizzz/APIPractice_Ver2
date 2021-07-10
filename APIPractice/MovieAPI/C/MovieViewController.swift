@@ -219,9 +219,14 @@ extension MovieViewController:
       for: indexPath) as! MovieCell
     cell.delegate = self
     print("cell for item at")
+    if let image = movieData[indexPath.item].thumbNailImage {
+      cell.movieThumbnailImageView.kf.setImage(
+        with: URL(string: "https://image.tmdb.org/t/p/w500\(image)"))
+    } else {
+      cell.movieThumbnailImageView.kf.setImage(with: URL(string: "https://images-na.ssl-images-amazon.com/images/I/81u6wFnRDHL._AC_SL1500_.jpg"))
+    }
     let movie = movieData[indexPath.item]
-    cell.movieThumbnailImageView.kf.setImage(
-      with: URL(string: "https://image.tmdb.org/t/p/w500\(movie.thumbNailImage)"))
+    
     cell.movieNameLabel.text = movie.movieName
     cell.averageCountLabel.text = "⭐\(movie.average)"
     return cell
@@ -241,7 +246,12 @@ extension MovieViewController:
     guard let indexPath = collectionView.indexPath(for: cell) else { return }
     let movieDetailVC = MovieDetailViewController()
     let movie = movieData[indexPath.item]
-    movieDetailVC.detailView.movieThumbnailImageView.kf.setImage(with: URL(string: "https://image.tmdb.org/t/p/w500\(movie.thumbNailImage)"))
+    if let image = movieData[indexPath.item].thumbNailImage {
+      movieDetailVC.detailView.movieThumbnailImageView.kf.setImage(
+        with: URL(string: "https://image.tmdb.org/t/p/w500\(image)"))
+    } else {
+      movieDetailVC.detailView.movieThumbnailImageView.kf.setImage(with: URL(string: "https://images-na.ssl-images-amazon.com/images/I/81u6wFnRDHL._AC_SL1500_.jpg"))
+    }
     movieDetailVC.detailView.movieNameLabel.text = movie.movieName
     movieDetailVC.detailView.averageCountLabel.text = "⭐\(movie.average)"
     movieDetailVC.detailView.overviewLabel.text = movie.overview

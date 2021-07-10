@@ -26,7 +26,7 @@ struct Movie: Codable {
   
   init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: CodingKeys.self)
-    thumbNailImage = try? values.decode(String.self, forKey: .thumbNailImage) ?? "https://images-na.ssl-images-amazon.com/images/I/81u6wFnRDHL._AC_SL1500_.jpg"
+    thumbNailImage = try? values.decode(String.self, forKey: .thumbNailImage)
     movieName = try values.decode(String.self, forKey: .movieName)
     releaseDate = try values.decode(String.self, forKey: .releaseDate)
     average = try values.decode(Float.self, forKey: .average)
